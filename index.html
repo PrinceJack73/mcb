@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+
+<body class="text-center p-4">
+  <h2>Processing Your Payment...</h2>
+  <div id="loading">Please wait while we redirect you to payment page.</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="https://test-mcbpk.mtf.gateway.mastercard.com/static/checkout/checkout.min.js"></script>
+
+  <script>
+    // Get sessionId from query param
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('sessionId');
+
+    if (!sessionId) {
+      document.getElementById('loading').innerText = "Missing session ID. Cannot proceed.";
+    } else {
+      Checkout.configure({
+        session: {
+          id: sessionId
+        }
+      });
+      Checkout.showPaymentPage();
+    }
+  </script>
+</body>
+</html>

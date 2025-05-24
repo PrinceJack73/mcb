@@ -58,7 +58,7 @@
     <h2>Payment Successful!</h2>
     <p class="mb-4">Thank you for your purchase. Your payment has been received.</p>
     
-    <p><strong>Order ID:</strong> <span id="orderId">--</span></p>
+   <!-- <p><strong>Order ID:</strong> <span id="orderId">--</span></p> -->
     <p><strong>Transaction:</strong> <span id="resultIndicator">--</span></p>
 
     <a href="https://yourapp.com" class="btn btn-success mt-4">Back to App</a>
@@ -66,7 +66,7 @@
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    document.getElementById('orderId').innerText = params.get('orderId') || 'N/A';
+    //document.getElementById('orderId').innerText = params.get('orderId') || 'N/A';
     document.getElementById('resultIndicator').innerText = params.get('resultIndicator') || 'N/A';
   </script>
 </body>
